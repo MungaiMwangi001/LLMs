@@ -50,7 +50,7 @@ model = GPT2ForSequenceClassification.from_pretrained("gpt2", num_labels=3)
 # Use the tokenizer's pad_token_id
 model.config.pad_token_id = tokenizer.pad_token_id
 
-!pip install evaluate==0.4.2
+
 
 """**Evaluate Method**"""
 
