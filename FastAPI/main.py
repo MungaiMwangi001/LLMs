@@ -1,9 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
+import os 
 
 # Load trained model
-model = joblib.load("model.pkl")
+model = joblib.load("models/model.pkl")
+
 
 # Class labels from Iris dataset
 iris_classes = ["setosa", "versicolor", "virginica"]
@@ -40,3 +42,9 @@ def predict(data: InputData):
         "flower_name": flower_name,
         "probabilities": probs_dict
     }
+
+
+
+@app.get("/files")
+def list_files():
+    return {"files": os.listdir(".")}
