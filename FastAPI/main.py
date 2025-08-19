@@ -1,10 +1,14 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
-import os 
+import joblib
+from pathlib import Path
 
-# Load trained model
-model = joblib.load("models/model.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+model_path = BASE_DIR / "model.pkl"
+
+model = joblib.load(model_path)
+
 
 
 # Class labels from Iris dataset
@@ -44,7 +48,3 @@ def predict(data: InputData):
     }
 
 
-
-@app.get("/files")
-def list_files():
-    return {"files": os.listdir(".")}
