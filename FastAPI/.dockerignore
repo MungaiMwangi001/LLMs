@@ -1,0 +1,36 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Git
+.git/
+.gitignore
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# Node modules (if any frontend)
+node_modules/
+
+# Ignore Dockerfile copies inside context
+Dockerfile
+
+# Any local data or temporary files
+*.sqlite
+*.db
+*.tmp

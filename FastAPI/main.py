@@ -1,15 +1,14 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
-import joblib
 from pathlib import Path
 
+# Path to the model inside models/ folder
 BASE_DIR = Path(__file__).resolve().parent
-model_path = BASE_DIR / "model.pkl"
+model_path = BASE_DIR / "models" / "model.pkl"
 
+# Load model
 model = joblib.load(model_path)
-
-
 
 # Class labels from Iris dataset
 iris_classes = ["setosa", "versicolor", "virginica"]
@@ -38,7 +37,7 @@ def predict(data: InputData):
     flower_name = iris_classes[prediction]
 
     # Probabilities
-    probabilities = model.predict_proba(X)[0]  # array of [p_setosa, p_versicolor, p_virginica]
+    probabilities = model.predict_proba(X)[0]
     probs_dict = {iris_classes[i]: float(probabilities[i]) for i in range(len(iris_classes))}
 
     return {
@@ -46,5 +45,3 @@ def predict(data: InputData):
         "flower_name": flower_name,
         "probabilities": probs_dict
     }
-
-

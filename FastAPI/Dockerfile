@@ -1,21 +1,19 @@
 # Use official Python image
 FROM python:3.11-slim
 
-# Set working directory inside container
+# Set working directory
 WORKDIR /app
 
-# Copy requirements first (for better caching)
+# Copy requirements first for caching
 COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project files
-COPY model.pkl model.pkl
+# Copy the whole project (including models folder)
 COPY . .
 
-
-# Expose port
+# Expose FastAPI port
 EXPOSE 8000
 
 # Start FastAPI with Uvicorn
