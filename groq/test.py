@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
+
 st.set_page_config(
     page_title="Groq Chatbot",
     page_icon=":rocket:",
