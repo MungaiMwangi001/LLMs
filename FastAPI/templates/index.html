@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iris Classifier 🌸</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Iris Flower Classifier</h1>
+        <form method="post" action="/predict-ui">
+            <input type="number" step="any" name="feature1" placeholder="Sepal Length" required>
+            <input type="number" step="any" name="feature2" placeholder="Sepal Width" required>
+            <input type="number" step="any" name="feature3" placeholder="Petal Length" required>
+            <input type="number" step="any" name="feature4" placeholder="Petal Width" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Prediction: {{ result }}</h2>
+            <p><strong>Probabilities:</strong></p>
+            <ul>
+                {% for cls, prob in probs.items() %}
+                    <li>{{ cls }}: {{ prob }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
